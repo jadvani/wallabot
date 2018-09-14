@@ -50,3 +50,9 @@ product_containers = html_soup.find_all('p', class_ = 'product-info-description'
 quantity = len(product_containers)
 print('he encontrado '+str(quantity)+' resultados')
 
+#mostrar primeros 50 caracteres de cada uno de los resultados
+
+
+for x in range(0, quantity):
+    print product_containers[x].get_text()[:50]+'\n'
+
