@@ -24,9 +24,6 @@ def translateSingleWord(word):
     finalWord= ''.join(separate)
     return finalWord
 
-def unicode_input(prompt):
-    return raw_input(prompt).decode('latin1')
-
 #funcion para extraer imagen a partir de url, fuente: 
 #https://www.pyimagesearch.com/2015/03/02/convert-url-to-image-with-python-and-opencv/
 
@@ -37,19 +34,3 @@ def url_to_image(url):
 	image = cv2.imdecode(image, cv2.IMREAD_COLOR)
 	return image
 
-
-def getSearchInput():
-    result=''
-    flag=0
-    elemento = unicode_input("Introduzca la/s palabra/s a buscar, '%' como siguiente palabra para finalizar:\n")
-
-    while elemento != '%':
-        if flag == 0:
-            result=urllib2.quote(elemento.encode('utf-8'))
-        else:
-            result=result+'+'+urllib2.quote(elemento.encode('utf-8'))
-            
-        elemento =unicode_input("siguiente palabra:\n")
-        flag=1
-
-    return result

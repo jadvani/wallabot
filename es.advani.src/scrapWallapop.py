@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-import commonFunctions.py
-import BeautifulSoup
+import commonFunctions
+from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt #%matplotlib inline para que vaya saliendo
 from requests import get
-url = 'https://es.wallapop.com/search?kws='+commonFunctions.getSearchInput()+'&catIds=&verticalId='
+
+searchInputText=raw_input('Inserte búsqueda: ')
+
+url = 'https://es.wallapop.com/search?kws='+commonFunctions.translateWords(searchInputText)+'&catIds=&verticalId='
 print('buscando...')
 response = get(url)
 

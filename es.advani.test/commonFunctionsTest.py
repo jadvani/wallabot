@@ -9,8 +9,11 @@ import commonFunctions as common
 
 class TestStringMethods(unittest.TestCase):
 
-    def testInputBolanio(self):
+    def translateSingleWordTest(self):
         self.assertEqual(common.translateSingleWord('bolaño'), 'bola%C3%B1o')
-        
+
+    def translateWordsJulioCortazarTest(self):
+        self.assertEqual(common.translateWords('julio cortázar'), 'julio+cort%C3%A1zar')
+ 
 if __name__ == '__main__':
     unittest.main()
