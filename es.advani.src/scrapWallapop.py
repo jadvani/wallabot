@@ -57,7 +57,8 @@ def printSoupProducts(html_soup):
             plt.show()
             print product_titles[x].get_text()+'->'+product_prices[x].get_text()+'\n'
             print getDayPublish(product_links[x])
-            print 'https://es.wallapop.com'+product_links[x]
+            getLocation(product_links[x])
+            #print 'https://es.wallapop.com'+product_links[x]
             print product_descriptions[x].get_text()[:100]+'(...) '+'\n'
             
 def getLinksOfProducts(html_soup):
@@ -76,6 +77,16 @@ def getDayPublish(itemUrl):
     product_date = previous_date[0].get_text().split('\t')
     return final_date.join([str(x) for x in product_date]).split('\n')[1] 
     
-    
-    
+def getLocation(itemUrl): 
+    final_location=''
+    response=get('https://es.wallapop.com'+itemUrl)
+    product_soup = BeautifulSoup(response.text, 'html.parser')
+    type(product_soup)
+    previous_location = product_soup.find_all('div', class_ = 'card-product-detail-location')
+    final_location= previous_location[0].get_text().strip().split('\t')
+    zipCode=final_location[0]
+    city=final_location[-1]
+    zipCode=zipCode.split(',\n')[0]
+    city=city.split('0')[-1]
+    print (zipCode+','+city)
         
