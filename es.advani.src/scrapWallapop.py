@@ -55,8 +55,9 @@ def printSoupProducts(html_soup):
             img=commonFunctions.url_to_image(product_images[x]['src'])
             plt.imshow(img)
             plt.show()
-            print 'https://es.wallapop.com'+product_links[x]
             print product_titles[x].get_text()+'->'+product_prices[x].get_text()+'\n'
+            print getDayPublish(product_links[x])
+            print 'https://es.wallapop.com'+product_links[x]
             print product_descriptions[x].get_text()[:100]+'(...) '+'\n'
             
 def getLinksOfProducts(html_soup):
@@ -66,5 +67,15 @@ def getLinksOfProducts(html_soup):
             product_links.append(a['href'])
     return product_links
             
+def getDayPublish(itemUrl):
+    final_date=''
+    response=get('https://es.wallapop.com'+itemUrl)
+    product_soup = BeautifulSoup(response.text, 'html.parser')
+    type(product_soup)
+    previous_date = product_soup.find_all('div', class_ = 'card-product-detail-user-stats-published')
+    product_date = previous_date[0].get_text().split('\t')
+    return final_date.join([str(x) for x in product_date]).split('\n')[1] 
+    
+    
     
         
