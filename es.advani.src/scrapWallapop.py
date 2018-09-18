@@ -40,7 +40,8 @@ def printSoupProducts(productListSearch):
             plt.show()
             print productListSearch.product_titles[x].get_text()+'->'+productListSearch.product_prices[x].get_text()+'\n'
             print getDayPublish(productListSearch.product_links[x])
-            getLocation(productListSearch.product_links[x])
+            product_location=getLocation(productListSearch.product_links[x])
+            print(product_location[0]+','+product_location[1])
             #print 'https://es.wallapop.com'+productListSearch.product_links[x]
             print productListSearch.product_descriptions[x].get_text()[:100]+'(...) '+'\n'
             
@@ -71,6 +72,6 @@ def getLocation(itemUrl):
     city=final_location[-1]
     zipCode=zipCode.split(',\n')[0]
     city=city.split('0')[-1]
-    print (zipCode+','+city)
+    return [zipCode.encode('latin1'), city.replace(u'\xa0', u'').encode('latin1')]
 #example        
-printSoupProducts(fillListOfProducts(createSoupOfProducts('iron maiden eddie mcfarlane')))
+#printSoupProducts(fillListOfProducts(createSoupOfProducts('iron maiden eddie mcfarlane')))
