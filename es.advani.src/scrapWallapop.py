@@ -34,32 +34,42 @@ from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt #%matplotlib inline para que vaya saliendo
 from requests import get 
 
+class listOfProducts():
+    product_titles=[]
+    product_prices=[]
+    product_descriptions=[]
+    product_images=[]
+    product_links=[]
+    quantity=0;
+    
 #get all the products available
 def createSoupOfProducts(searchInputText):
+    productListSearch=listOfProducts()
     url = 'https://es.wallapop.com/search?kws='+commonFunctions.translateWords(searchInputText)+'&catIds=&verticalId='
     response = get(url)
     html_soup = BeautifulSoup(response.text, 'html.parser')
     type(html_soup)
-    return html_soup
+    productListSearch.product_titles = html_soup.find_all('a', class_ = 'product-info-title')
+    productListSearch.product_prices = html_soup.find_all('span', class_ = 'product-info-price')
+    productListSearch.product_descriptions = html_soup.find_all('p', class_ = 'product-info-description')
+    productListSearch.product_images = html_soup.find_all('img', class_ = 'card-product-image')
+    productListSearch.product_links=getLinksOfProducts(html_soup)
+    productListSearch.quantity = len(productListSearch.product_titles)
+    return productListSearch
 
-def printSoupProducts(html_soup):
-    product_titles = html_soup.find_all('a', class_ = 'product-info-title')
-    product_prices = html_soup.find_all('span', class_ = 'product-info-price')
-    product_descriptions = html_soup.find_all('p', class_ = 'product-info-description')
-    product_images = html_soup.find_all('img', class_ = 'card-product-image')
-    product_links=getLinksOfProducts(html_soup)
-    quantity = len(product_titles)
-    print('he encontrado '+str(quantity)+' resultados')
-    if quantity>=0:
-        for x in range(0, quantity):
-            img=commonFunctions.url_to_image(product_images[x]['src'])
+def printSoupProducts(productListSearch):
+
+    print('he encontrado '+str(productListSearch.quantity)+' resultados')
+    if productListSearch.quantity>=0:
+        for x in range(0, productListSearch.quantity):
+            img=commonFunctions.url_to_image(productListSearch.product_images[x]['src'])
             plt.imshow(img)
             plt.show()
-            print product_titles[x].get_text()+'->'+product_prices[x].get_text()+'\n'
-            print getDayPublish(product_links[x])
-            getLocation(product_links[x])
-            #print 'https://es.wallapop.com'+product_links[x]
-            print product_descriptions[x].get_text()[:100]+'(...) '+'\n'
+            print productListSearch.product_titles[x].get_text()+'->'+productListSearch.product_prices[x].get_text()+'\n'
+            print getDayPublish(productListSearch.product_links[x])
+            getLocation(productListSearch.product_links[x])
+            #print 'https://es.wallapop.com'+productListSearch.product_links[x]
+            print productListSearch.product_descriptions[x].get_text()[:100]+'(...) '+'\n'
             
 def getLinksOfProducts(html_soup):
     product_links=[]
