@@ -31,9 +31,7 @@ def fillListOfProducts(html_soup):
     productListSearch.quantity = len(productListSearch.product_titles)
     return productListSearch
 
-#TODO: correct image colors (minor changes)
 def printSoupProducts(productListSearch):
-
     print('he encontrado '+str(productListSearch.quantity)+' resultados')
     if productListSearch.quantity>=0:
         for x in range(0, productListSearch.quantity):
@@ -75,4 +73,4 @@ def getLocation(itemUrl):
     city=city.split('0')[-1]
     print (zipCode+','+city)
 #example        
-#printSoupProducts(fillListOfProducts(createSoupOfProducts('iron maiden eddie mcfarlane')))
+printSoupProducts(fillListOfProducts(createSoupOfProducts('iron maiden eddie mcfarlane')))

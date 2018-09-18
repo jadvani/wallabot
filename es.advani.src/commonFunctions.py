@@ -15,7 +15,7 @@ def translateWords(sentence):
         else: 
             result=result+'+'+translateSingleWord(word)
     return result
-
+#spanish language requires a different encoding system
 def translateSingleWord(word):
     finalWord=''
     result=word.decode('latin1')
@@ -24,13 +24,13 @@ def translateSingleWord(word):
     finalWord= ''.join(separate)
     return finalWord
 
-#funcion para extraer imagen a partir de url, fuente: 
-#https://www.pyimagesearch.com/2015/03/02/convert-url-to-image-with-python-and-opencv/
-
 def url_to_image(url):
 
 	resp = urllib2.urlopen(url)
 	image = np.asarray(bytearray(resp.read()), dtype="uint8")
 	image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+  #only for matplotlib imshow purposes
+	b,g,r = cv2.split(image)       # get b,g,r
+	image = cv2.merge([r,g,b])     # switch it to rgb
 	return image
 
