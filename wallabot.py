@@ -8,8 +8,8 @@ import requests
 import time
 
 #bot telegram 
-import telebot
-from telebot import types
+# import telebot
+#from telebot import types
 
 
 TOKEN = '***' # Ponemos nuestro Token generado con el @BotFather

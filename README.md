@@ -1,4 +1,5 @@
 # wallabot
+# UPDATE 31/07/2022: WallaPop has changed considerably, and I will be updating the functions shortly. The script "define_search.py" contains the basic functionality to perform an automatic search.
 
 # UPDATE 17/09/2018: IT WORKS AGAIN. Better functions are being added, also following a clean-code way, TDD and object-oriented stuff are coming soon! In the next few days will be also added the way it does a search periodically...
 

@@ -1,0 +1,15 @@
+'ver_mas_label': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/tsl-search-layout/div/div[2]/div/div[1]/tsl-button/button'
+'accept_cookies': '/html/body/div[1]/div[2]/div/div/div[2]/div/div/button'
+# set price range
+'price': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-filters-wrapper/div/div/tsl-filter-group/div/div[2]/tsl-filter-host/div/tsl-range-filter/tsl-filter-template/div/tsl-bubble/div/div/div'
+'min_price': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-filters-wrapper/div/div[2]/tsl-filter-group/div/div[2]/tsl-filter-host/div/tsl-range-filter/tsl-filter-template/div/div/div[2]/div/form/div/div[1]/input'
+'max_price': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-filters-wrapper/div/div[2]/tsl-filter-group/div/div[2]/tsl-filter-host/div/tsl-range-filter/tsl-filter-template/div/div/div[2]/div/form/div/div[2]/input'
+'apply_price': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-filters-wrapper/div/div[2]/tsl-filter-group/div/div[2]/tsl-filter-host/div/tsl-range-filter/tsl-filter-template/div/div/div[3]/tsl-button[2]/button'
+# set order
+'order_by': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-sort-filter/div/div[1]/div[1]'
+'cheapest': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-sort-filter/div/div[2]/div[2]/tsl-select-form/div[3]/tsl-select-option/div'
+'most_expensive': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-sort-filter/div/div[2]/div[2]/tsl-select-form/div[4]/tsl-select-option/div'
+'newest': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-sort-filter/div/div[2]/div[2]/tsl-select-form/div[5]/tsl-select-option/div'
+'nearest': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/div/tsl-sort-filter/div/div[2]/div[2]/tsl-select-form/div[2]/tsl-select-option/div'
+# retrieve elements
+'search_item': '/html/body/tsl-root/tsl-public/div/div/tsl-search/div/tsl-search-layout/div/div[2]/div/tsl-public-item-card-list/div/'
